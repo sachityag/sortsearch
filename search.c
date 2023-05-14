@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "compare.h"
+#include "compareterm.h"
 #include "search.h"
 
 int search(int a[], int begin, int end, int searchterm)
@@ -10,7 +10,7 @@ int search(int a[], int begin, int end, int searchterm)
 	//if end - begin <= 1
 	//array size is 1, compare and return
 	if (end - begin <= 1) {
-		retval = compare(a, begin, searchterm);
+		retval = compareterm(a, begin, searchterm);
 		if (retval == 0) {
 			printf("\nfound at begin %d\n", begin);
 			return begin;
@@ -19,8 +19,9 @@ int search(int a[], int begin, int end, int searchterm)
 	}
 	//find middle
 	mid = begin + (end-begin)/2;
+	printf("mid is %d\n", mid);
 	//compare with middle
-	retval = compare(a, mid, searchterm);
+	retval = compareterm(a, mid, searchterm);
 	//if a[mid] == searchterm then return mid (found at mid)
 	if (retval == 0) {
 		printf("\nfound at mid %d\n", mid);

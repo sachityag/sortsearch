@@ -1,20 +1,20 @@
-a.out: searchmain.o compare.o search.o bubblesort.o swap.o
-	gcc -o a.out searchmain.o compare.o search.o bubblesort.o swap.o
+a.out: searchmain.o compareterm.o search.o bubblesort.o swap.o compare.o
+	gcc -o a.out searchmain.o compareterm.o search.o bubblesort.o swap.o compare.o
 
-searchmain.o: searchmain.c compare.h search.h bubblesort.h swap.h
+searchmain.o: searchmain.c compareterm.h search.h bubblesort.h swap.h compare.h
 	gcc searchmain.c -o searchmain.o -c
 
-b.out: comparemain.o compare.o
-	gcc -o b.out comparemain.o compare.o
+search.o: search.c search.h compareterm.h
+	gcc search.c -o search.o -c
 
-comparemain.o: comparemain.c compare.h
+b.out: comparemain.o compareterm.o
+	gcc -o b.out comparemain.o compareterm.o
+
+comparemain.o: comparemain.c compareterm.h
 	gcc comparemain.c -o comparemain.o -c
 
-compare.o: compare.c compare.h
-	gcc compare.c -o compare.o -c
-
-search.o: search.c search.h compare.h
-	gcc search.c -o search.o -c
+compareterm.o: compareterm.c compareterm.h
+	gcc compareterm.c -o compareterm.o -c
 
 c.out: bubblemain.o bubblesort.o swap.o compare.o
 	gcc -o a.out bubblemain.o bubblesort.o swap.o compare.o
@@ -34,5 +34,8 @@ csmain.o: csmain.c swap.h compare.h
 swap.o: swap.c swap.h
 	gcc swap.c -o swap.o -c
 
+compare.o: compare.c compare.h
+	gcc compare.c -o compare.o -c
+
 clean: 
-	rm *.o a.out b.out c.out d.out
+	rm *.out *.o
