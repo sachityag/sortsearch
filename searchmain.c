@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "compare.h"
 #include "search.h"
+#include "bubblesort.h"
+#include "swap.h"
 
 
 
@@ -17,6 +19,7 @@ int main(int argc, char *argv[])
 		printf("Your array must be less than 21!!\n");
 		return 0;
 	}
+	bubblesort(a, len);
 	len = argc - 2;
 	//searchterm = argv[len]
 	searchterm = atoi(argv[len+1]);
